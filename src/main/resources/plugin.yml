@@ -1,0 +1,11 @@
+name: BowsArrow
+version: ${project.version}
+main: me.ghalidouga.bowsarrow.BowsArrow
+api-version: 1.13
+authors: [ghalidouga]
+description: Mini game 5Bows1Arrow
+commands:
+  ready:
+    description:  Untuk berganti mode bersiap.
+    usage: /<command>
+
