@@ -6,10 +6,7 @@ import me.ghalidouga.bowsarrow.Events.ArrowHit;
 import me.ghalidouga.bowsarrow.Events.CantBreak;
 import me.ghalidouga.bowsarrow.Events.DroppingItem;
 import me.ghalidouga.bowsarrow.Events.OnJoin;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Server;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -21,9 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.NumberConversions;
 
 public final class BowsArrow extends JavaPlugin implements Listener {
-//public class TotalReady{
-    //public int totalReady = 0;
-//}
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -37,6 +32,8 @@ public final class BowsArrow extends JavaPlugin implements Listener {
 
     }
 
+
+    // Ready Unready Command
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // command /ready

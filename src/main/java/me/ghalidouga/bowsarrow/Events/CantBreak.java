@@ -13,7 +13,9 @@ public class CantBreak implements Listener {
     public void cantBreak(BlockBreakEvent e){
         Player player = e.getPlayer();
         e.setCancelled(true);
-        player.sendMessage(ChatColor.RED + "Maaf, tydak bisa menghancurkan block");
+        if(player.isOp()){
+            e.setCancelled(false);
+        }
     }
 
 
