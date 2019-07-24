@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.server.BroadcastMessageEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.NumberConversions;
 
@@ -45,10 +46,12 @@ public final class BowsArrow extends JavaPlugin implements Listener {
                 }else {
                     getServer().broadcastMessage(player.getDisplayName() + ChatColor.GREEN + " Telah Ready");
                     player.getInventory().addItem(new ItemStack(Material.BOW, 1));
+                    player.getInventory().addItem(new ItemStack(Material.GREEN_WOOL, 1));
+                    player.getInventory().removeItem(new ItemStack(Material.RED_WOOL, 1));
                 }
             }
         }
-
+        // command /unready
         if(command.getName().equals("unready")){
             if(sender instanceof  Player){
                 Player player = (Player) sender;
@@ -56,6 +59,9 @@ public final class BowsArrow extends JavaPlugin implements Listener {
                 {
                     getServer().broadcastMessage(player.getDisplayName() + ChatColor.RED + " tidak jadi Ready");
                     player.getInventory().removeItem(new ItemStack(Material.BOW, 1));
+                    player.getInventory().removeItem(new ItemStack(Material.GREEN_WOOL));
+                    player.getInventory().addItem(new ItemStack(Material.RED_WOOL,1));
+
                 }else{
                     player.sendMessage(ChatColor.RED + "Kamu harus ready dulu sebelum unready, Pepega.");
                 }
