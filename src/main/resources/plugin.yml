@@ -9,3 +9,6 @@ commands:
     description:  Untuk berganti mode bersiap.
     usage: /<command>
 
+  unready:
+    description:  Untuk membatalkan ready.
+    usage: /<command>
