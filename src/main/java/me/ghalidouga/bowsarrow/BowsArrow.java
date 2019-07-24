@@ -4,6 +4,8 @@ package me.ghalidouga.bowsarrow;
 
 import me.ghalidouga.bowsarrow.Events.ArrowHit;
 import me.ghalidouga.bowsarrow.Events.CantBreak;
+import me.ghalidouga.bowsarrow.Events.DroppingItem;
+import me.ghalidouga.bowsarrow.Events.OnJoin;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -27,6 +29,8 @@ public final class BowsArrow extends JavaPlugin implements Listener {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new CantBreak(), this);
         getServer().getPluginManager().registerEvents(new ArrowHit(), this);
+        getServer().getPluginManager().registerEvents(new DroppingItem(),this);
+        getServer().getPluginManager().registerEvents(new OnJoin(),this);
         saveDefaultConfig();
 
 
@@ -39,19 +43,26 @@ public final class BowsArrow extends JavaPlugin implements Listener {
         if(command.getName().equals("ready")){
             if(sender instanceof  Player) {
                 Player player = (Player) sender;
-                getServer().broadcastMessage(player.getDisplayName() + ChatColor.GREEN + " Telah Ready");
-                player.getInventory().addItem(new ItemStack(Material.BOW,1));
-
-            }else{
-                System.out.println("You need to be a player");
+                if(player.getInventory().contains(new ItemStack(Material.BOW,1))){
+                    player.sendMessage(ChatColor.RED + "Maaf, kamu sudah ready");
+                }else {
+                    getServer().broadcastMessage(player.getDisplayName() + ChatColor.GREEN + " Telah Ready");
+                    player.getInventory().addItem(new ItemStack(Material.BOW, 1));
+                }
             }
         }
 
         if(command.getName().equals("unready")){
             if(sender instanceof  Player){
                 Player player = (Player) sender;
-                getServer().broadcastMessage(player.getDisplayName() + ChatColor.RED + " tidak jadi Ready");
-                player.getInventory().removeItem(new ItemStack(Material.BOW,1));
+                if(player.getInventory().contains(new ItemStack(Material.BOW,1)))
+                {
+                    getServer().broadcastMessage(player.getDisplayName() + ChatColor.RED + " tidak jadi Ready");
+                    player.getInventory().removeItem(new ItemStack(Material.BOW, 1));
+                }else{
+                    player.sendMessage(ChatColor.RED + "Kamu harus ready dulu sebelum unready, Pepega.");
+                }
+
             }
         }
 

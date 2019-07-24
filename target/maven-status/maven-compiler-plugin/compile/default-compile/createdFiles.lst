@@ -1,3 +1,5 @@
+me\ghalidouga\bowsarrow\Events\DroppingItem.class
+me\ghalidouga\bowsarrow\Events\OnJoin.class
 me\ghalidouga\bowsarrow\Events\CantBreak.class
 me\ghalidouga\bowsarrow\BowsArrow.class
 me\ghalidouga\bowsarrow\Events\ArrowHit.class
