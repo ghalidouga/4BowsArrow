@@ -19,16 +19,17 @@ public class OnJoin implements Listener {
     public void  onJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
 
+        player.setFoodLevel(20);
+        player.setHealth(20);
+
         player.getInventory().clear();
         player.setGameMode(GameMode.SURVIVAL);
+
         ItemStack redwool = new ItemStack(Material.RED_WOOL,1);
         redwool.addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK, 1000);
         ItemMeta redwoolmeta = redwool.getItemMeta();
-
         redwoolmeta.setDisplayName(ChatColor.RED + "Status Belum Ready");
-
         redwool.setItemMeta(redwoolmeta);
-
         Inventory hotbar = player.getInventory();
         hotbar.setItem(8, redwool);
         return ;
