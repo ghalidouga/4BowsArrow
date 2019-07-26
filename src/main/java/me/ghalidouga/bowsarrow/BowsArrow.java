@@ -2,10 +2,7 @@ package me.ghalidouga.bowsarrow;
 
 
 
-import me.ghalidouga.bowsarrow.Events.ArrowHit;
-import me.ghalidouga.bowsarrow.Events.CantBreak;
-import me.ghalidouga.bowsarrow.Events.DroppingItem;
-import me.ghalidouga.bowsarrow.Events.OnJoin;
+import me.ghalidouga.bowsarrow.Events.*;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,6 +26,7 @@ public final class BowsArrow extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ArrowHit(), this);
         getServer().getPluginManager().registerEvents(new DroppingItem(),this);
         getServer().getPluginManager().registerEvents(new OnJoin(),this);
+        getServer().getPluginManager().registerEvents(new MoveWool(), this);
         getServer().getPluginManager().registerEvents(this,this);
         saveDefaultConfig();
 
