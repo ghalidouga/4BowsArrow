@@ -25,7 +25,7 @@ public class CantBreak implements Listener {
     @EventHandler
     public void cantPlace(BlockPlaceEvent e){
         Player player = e.getPlayer();
-        e.setBuild(false);
+        e.setCancelled(true);
         if(player.isOp()){
             e.setBuild(true);
         }

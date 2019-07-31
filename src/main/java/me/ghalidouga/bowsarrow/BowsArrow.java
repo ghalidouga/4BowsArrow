@@ -19,15 +19,18 @@ import org.bukkit.util.NumberConversions;
 
 public final class BowsArrow extends JavaPlugin implements Listener {
 
+
+
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getServer().getPluginManager().registerEvents(new CantBreak(), this);
+        //getServer().getPluginManager().registerEvents(new CantBreak(), this);
         getServer().getPluginManager().registerEvents(new ArrowHit(), this);
         getServer().getPluginManager().registerEvents(new DroppingItem(),this);
         getServer().getPluginManager().registerEvents(new OnJoin(),this);
         getServer().getPluginManager().registerEvents(new MoveWool(), this);
         getServer().getPluginManager().registerEvents(this,this);
+        getServer().getPluginManager().registerEvents(new OnReady(),this);
         saveDefaultConfig();
 
 
@@ -65,11 +68,16 @@ public final class BowsArrow extends JavaPlugin implements Listener {
         if(command.getName().equals("ready")){
             if(sender instanceof  Player) {
                 Player player = (Player) sender;
+                Location loc1 = new Location(Bukkit.getWorld("Blast"),0.5,4,-11.5,0,0);
+                Location loc2 = new Location(Bukkit.getWorld("Blast"),-11.5,4,0.5,-90,0);
+                Location loc3 = new Location(Bukkit.getWorld("Blast"),0.5,4,12.5,180,0);
+                Location loc4 = new Location(Bukkit.getWorld("Blast"),12.5,4,0.5,90,0);
                 ItemStack greenwool = new ItemStack(Material.GREEN_WOOL,1);
                 greenwool.addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK,1000);
                 ItemMeta greenmeta = greenwool.getItemMeta();
                 greenmeta.setDisplayName(ChatColor.GREEN + "Sudah Ready");
                 greenwool.setItemMeta(greenmeta);
+                player.teleport(loc1);
                 if(player.getInventory().contains(new ItemStack(Material.BOW,1))){
                     player.sendMessage(ChatColor.RED + "Maaf, kamu sudah ready");
                 }else {

@@ -1,4 +1,5 @@
 me\ghalidouga\bowsarrow\Events\DroppingItem.class
+me\ghalidouga\bowsarrow\Events\OnReady.class
 me\ghalidouga\bowsarrow\Events\OnJoin.class
 me\ghalidouga\bowsarrow\Events\CantBreak.class
 me\ghalidouga\bowsarrow\Events\MoveWool.class
