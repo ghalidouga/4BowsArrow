@@ -38,8 +38,8 @@ public final class BowsArrow extends JavaPlugin implements Listener {
     }
     public static ItemStack GreenWool(){
         ItemStack greenwool = new ItemStack(Material.GREEN_WOOL,1);
-        ItemMeta greenmeta = greenwool.getItemMeta();
         greenwool.addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK,1000);
+        ItemMeta greenmeta = greenwool.getItemMeta();
         greenmeta.setDisplayName(ChatColor.GREEN + "Sudah Ready");
         greenwool.setItemMeta(greenmeta);
         return greenwool;
@@ -59,6 +59,15 @@ public final class BowsArrow extends JavaPlugin implements Listener {
 
     }
 
+    public static ItemStack UnbreakingBow(){
+        ItemStack unbreakbow = new ItemStack(Material.BOW,1);
+        unbreakbow.addUnsafeEnchantment(Enchantment.DURABILITY,1000);
+        ItemMeta unbreakbowmeta = unbreakbow.getItemMeta();
+        unbreakbowmeta.setDisplayName(ChatColor.GREEN + "Bow 1 Hit");
+        unbreakbow.setItemMeta(unbreakbowmeta);
+        return unbreakbow;
+    }
+
 
     // Ready Unready Command
     @Override
@@ -72,17 +81,25 @@ public final class BowsArrow extends JavaPlugin implements Listener {
                 Location loc2 = new Location(Bukkit.getWorld("Blast"),-11.5,4,0.5,-90,0);
                 Location loc3 = new Location(Bukkit.getWorld("Blast"),0.5,4,12.5,180,0);
                 Location loc4 = new Location(Bukkit.getWorld("Blast"),12.5,4,0.5,90,0);
+
                 ItemStack greenwool = new ItemStack(Material.GREEN_WOOL,1);
                 greenwool.addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK,1000);
                 ItemMeta greenmeta = greenwool.getItemMeta();
                 greenmeta.setDisplayName(ChatColor.GREEN + "Sudah Ready");
                 greenwool.setItemMeta(greenmeta);
+
+                ItemStack unbreakbow = new ItemStack(Material.BOW,1);
+                unbreakbow.addUnsafeEnchantment(Enchantment.DURABILITY,1000);
+                ItemMeta unbreakbowmeta = unbreakbow.getItemMeta();
+                unbreakbowmeta.setDisplayName(ChatColor.GREEN + "Bow 1 Hit");
+                unbreakbow.setItemMeta(unbreakbowmeta);
+
                 player.teleport(loc1);
-                if(player.getInventory().contains(new ItemStack(Material.BOW,1))){
+                if(player.getInventory().contains(GreenWool())){
                     player.sendMessage(ChatColor.RED + "Maaf, kamu sudah ready");
                 }else {
                     getServer().broadcastMessage(player.getDisplayName() + ChatColor.GREEN + " Telah Ready");
-                    player.getInventory().addItem(new ItemStack(Material.BOW, 1));
+                    player.getInventory().setItem(0,unbreakbow);
                     player.getInventory().setItem(8,greenwool);
                     player.getInventory().removeItem(new ItemStack(Material.RED_WOOL, 1));
                 }
@@ -97,10 +114,10 @@ public final class BowsArrow extends JavaPlugin implements Listener {
                 ItemMeta redwoolmeta = redwool.getItemMeta();
                 redwoolmeta.setDisplayName(ChatColor.RED + "Belom Ready");
                 redwool.setItemMeta(redwoolmeta);
-                if(player.getInventory().contains(new ItemStack(Material.BOW,1)))
+                if(player.getInventory().contains(GreenWool()))
                 {
                     getServer().broadcastMessage(player.getDisplayName() + ChatColor.RED + " tidak jadi Ready");
-                    player.getInventory().removeItem(new ItemStack(Material.BOW, 1));
+                    player.getInventory().removeItem(UnbreakingBow());
                     player.getInventory().removeItem(new ItemStack(Material.GREEN_WOOL));
                     player.getInventory().setItem(8,redwool);
 

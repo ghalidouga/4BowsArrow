@@ -18,7 +18,7 @@ public class OnJoin implements Listener {
     public void  onJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
 
-        Location tpOnJoin = new Location(Bukkit.getWorld("Blast"), 0,5,0);
+        Location tpOnJoin = new Location(Bukkit.getWorld("Blast"), 0.5,5,0.5);
         player.teleport(tpOnJoin);
 
         player.setFoodLevel(20);
