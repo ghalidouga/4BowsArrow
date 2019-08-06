@@ -24,13 +24,14 @@ public final class BowsArrow extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        //getServer().getPluginManager().registerEvents(new CantBreak(), this);
+        getServer().getPluginManager().registerEvents(new CantBreak(), this);
         getServer().getPluginManager().registerEvents(new ArrowHit(), this);
         getServer().getPluginManager().registerEvents(new DroppingItem(),this);
         getServer().getPluginManager().registerEvents(new OnJoin(),this);
         getServer().getPluginManager().registerEvents(new MoveWool(), this);
         getServer().getPluginManager().registerEvents(this,this);
         getServer().getPluginManager().registerEvents(new OnReady(),this);
+        getServer().getPluginManager().registerEvents(new HittingOtherPlayer(),this);
         saveDefaultConfig();
 
 
